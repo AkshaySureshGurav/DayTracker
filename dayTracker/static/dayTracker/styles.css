@@ -1,0 +1,1082 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+:root {
+    /* --white: #ffffff; */
+    --black: #21232a;
+    --dark-orange: #f8cc5d;
+    --bgColor: #fdf1d3;
+    --fontColor: black; 
+    --shadow: black;
+    --taskColor: #f8cc5d;
+    --secondary-color: #fee8af;
+    --menu-button: black;
+    --hovered-menu-button: #f8cc5d;
+    --dialog-backdrop: rgba(0, 0, 0, 0.5);
+  }
+  
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    z-index: 1;
+}
+
+body {
+    color: var(--fontColor);
+    background-color: var(--bgColor);
+    font-family: "Inter", sans-serif;
+}
+
+
+a {
+  color: black;
+  text-decoration: unset;
+}
+
+button:focus {
+  outline: unset;
+}
+
+
+
+a:hover {
+  color: black;
+  text-decoration: unset;
+}
+
+#mainPage {
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+}
+
+#navAndTaskHolder {
+    height: 100%;
+    order: 2;
+    width: 84%;
+}
+
+#navAndTaskHolder > nav {
+  background-color: var(--secondary-color);
+  height: 15%;
+  padding: 2.5vh 5vw;
+  display: flex;
+  padding-left: 4vw;
+  align-items: center;
+  border: 1px solid var(--dark-orange);
+  margin: 1.5vh;
+  border-radius: 16px;
+  box-shadow: var(--shadow) 0px 2px 8px 0px;
+}
+
+#navAndTaskHolder > nav > #symbol {
+    height: 9vh;
+    width: 9vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3vh;
+}
+
+
+#navAndTaskHolder > nav > section > * {
+    margin-bottom: 0;
+    margin-left: 1.3vw;
+}
+
+
+/* links icon on index page */
+.links {
+    display: block;
+    height: 12%;
+    min-width: 80%;
+    border-radius: 16px;
+    /* background-color: #f8cc5d; */
+    width: fit-content;
+    text-align: center;
+    border: 2px solid var(--dark-orange);
+    color: var(--menu-button);
+}
+
+.links:hover {
+  background-color: var(--dark-orange);
+  color: black;
+}
+
+.links:active {
+  background-color: var(--dark-orange);
+  color: black;
+}
+
+.links:focus {
+  background-color: var(--dark-orange);
+  color: black;
+}
+
+
+.links > a {
+  height: 100%;
+  width: 100%;
+  color: inherit;
+}
+
+
+.links p {
+  font-size: 0.8em;
+  margin: 0;
+  padding: 0;
+  /* color: var(--menu-button); */
+  color: inherit;
+}
+
+
+.links i {
+  /* color: var(--menu-button); */
+  color: inherit;
+}
+
+
+.links:hover {
+    transform: scaleY(1.05);
+}
+
+/* .links::after {
+    content: '';
+    height: 4vh;
+    width: 6vw;
+    background-color: #f8cc5d;
+    position: absolute;
+    left: 85%;
+} */
+
+/* index page */
+#forUI {
+    height: 15vh;
+    width: 15vh;
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    z-index: 100;
+}
+
+.hide {
+    display: none;
+}
+
+
+.task {
+    color: var(--fontColor);
+    background-color: var(--taskColor);
+    padding: 1vh 3vw;
+    border: 1px solid var(--dark-orange);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 2.2vh 2vw;
+    box-shadow: var(--shadow) 2px 2px 4px;
+    border-radius: 6px;
+    font-size: 1.3rem;
+}
+
+.task p {
+  margin-bottom: 0.2vh;
+}
+
+
+select {
+  font-size: 0.9em;
+}
+
+select > option {
+  text-align: center;
+}
+/* 
+.task:nth-child(1) {
+  width: 70%;
+} */
+
+/* .task:nth-child(2) {
+  width: 70%;
+} */
+
+.addTaskFormHolder {
+    text-align: center;
+}
+
+#mainPage input[type="text"] {
+  padding: 0.4vh 2vw;
+  border-radius: 17px;
+}
+
+
+/* input[type="text"]:active {
+  border: 1px solid var(--dark-orange);
+} */
+
+input[name="addTaskFormSubmitter"] {
+  background-color: var(--dark-orange);
+  display: block;
+  margin-top: 0.5vh;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+
+#addTaskForm > * {
+  padding: 0.4vh 2vw;
+  border-radius: 17px;
+  font-size: 0.95em;
+  text-align: center;
+}
+
+#OptionsHolder {
+  height: 100%;
+  width: 16%;
+  order: 1;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0px 10px 5px var(--shadow), 0px -7px 25px var(--shadow);
+  min-width: 120px;
+  max-width: 200px;
+  background-color: var(--secondary-color);
+  border: 1px solid var(--dark-orange);
+}
+
+#OptionsHolder > * {
+  margin: 2vh 0;
+}
+
+.menu i {
+    color: var(--menu-button);
+    font-size: 170%;
+}
+
+
+
+
+#taskAdderAndShowerHolder {
+  padding: 1vh;
+  height: 82%; 
+  display: flex;
+  flex-direction: column;
+}
+
+#tasksHolder {
+  position: relative;
+  flex: 1;
+  padding: 0 0.3vw;
+  margin: 0 1.5vw;
+  padding-bottom: 7vh;
+  min-height: 0px;
+  overflow-y: auto;
+  box-shadow: 0 20px 10px -20px var(--shadow) inset;
+}
+
+
+dialog {
+    padding: 2vh 3vw;
+    text-align: center;
+    margin: 45vh 50vw;
+    transform: translate(-50%, -50%);
+    min-width: 60vw;
+    background-color: var(--dark-orange);
+    font-size: 1.2em;
+}
+
+dialog > p {
+  font-weight: bold;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+dialog > button {
+  padding: 1vh 3vw;
+}
+
+
+
+#toggleAddTaskFormToggler {
+    transform: rotate(0deg);
+    transition: transform 0.5s ease-in-out;
+    background-color: #f8cc5d;
+    border: unset;
+    outline: unset;
+    border-radius: 20px;
+    padding: 1vh;
+    margin-top: 1.5vh;
+}
+
+
+
+.taskActionBtn {
+    border: unset;
+    outline: unset;
+    padding: 2vh;
+    height: 50%;
+    width: fit-content;
+}
+
+.taskActionBtn i {
+  pointer-events: none;
+}
+
+
+.taskActionBtn > svg {
+    background-color: red;
+}
+
+.nav {
+  display: unset;
+}
+
+
+.priorityPara {
+  display: flex;
+  align-items: center;
+}
+
+/* 
+#postTaskMessage {
+  background-color: forestgreen;
+  padding: 2vh;
+} */
+
+
+
+
+   
+/* .addTaskFormHolder */
+
+
+/* menu */
+
+
+
+
+
+
+
+  .nav [type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+  }
+  
+.nav [type="checkbox"] + label {
+  position: relative;
+  width: 65px;
+  height: 65px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  /* cursor: pointer; */
+  z-index: 1;
+  background: #f8da8f;
+  border-radius: 50%;
+  transform: unset;
+  color: black;
+  border: 2px solid;
+}
+
+.nav [type="checkbox"] + label:hover {
+  background-color: var(--dark-orange);
+  color: black;
+}
+
+
+.menu {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.menu li {
+  position: relative;
+  width: 100%;
+  height: 8vh;
+  margin: 0.8vh 0;
+  opacity: 0;
+  transition: all 0.4s;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--menu-button);
+}
+
+.menu li > section {
+  height: 100%;
+  width: 100%;
+}
+
+
+.menu li:hover {
+  background-color: var(--hovered-menu-button);
+}
+
+.menu span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  font-size: 12px;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.3s;
+  color: var(--menu-button);
+  font-weight: bold;
+  overflow: visible;
+}
+
+  
+  
+
+  
+.nav input:checked + label {
+  background: var(--dark-orange);
+  /* background: var(--black); */
+  color: var(--black);
+}
+
+
+
+  .nav input:checked ~ .menu li {
+    pointer-events: all;
+    opacity:1;
+    overflow: visible;
+  }
+
+
+/* forlogs */
+
+.flexContAllCentered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.flexContAllCentered > h5 {
+  color: var(--fontColor);
+  text-align: center;
+  padding: 0 5vw;
+  margin-top: 3vh;
+}
+
+
+
+.logsPageTask {
+  border: 1px dashed;
+  padding: 1vh 0;
+  width: 85%;
+  margin: 1vh 0;
+}
+
+table {
+  width: 92%;
+  margin: 3vh 0;
+  text-align: center;
+  color: black;
+}
+
+th {
+  font-weight: bolder;
+  font-size: 1.1em;
+  color: var(--fontColor);
+  border:2px solid var(--fontColor);
+}
+
+table, td {
+  border:2px solid black;
+}
+
+.completed {
+  background-color: #c8ffd5;
+}
+
+.pending {
+  background-color: #ffc0bf;
+}
+/* end index page */
+
+
+
+
+/* dayStatus page */
+#statusUpdate > * {
+  display: block;
+  margin-bottom: 1.1vh;
+}
+
+#statusUpdate {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+
+
+#statusUpdate > input[type="submit"] {
+  background-color: var(--dark-orange);
+  padding: 2.1vh 5vw;
+  border-radius: 16px;
+  outline: unset;
+  border: 1px solid;
+  box-shadow: var(--shadow) 0px 6px 12px -2px, var(--shadow) 0px 3px 7px -3px;
+  transition: all 0.2s ease-in-out;
+}
+
+#statusUpdate > input[type="submit"]:hover {
+  box-shadow: unset;
+  transform: translate(3px, 3px);
+}
+
+#statusUpdate > input[type="submit"]:active {
+  box-shadow: unset;
+  transform: translate(3px, 3px);
+}
+
+#statusUpdate > input[type="submit"]:focus {
+  box-shadow: unset;
+  transform: translate(3px, 3px);
+}
+
+#alert {
+  display: none;
+  padding: 20px;
+  color: white;
+  margin: 1vh 0;
+}
+
+#indexPageAlert {
+  background-color: green;
+  color: white;
+  display: none;
+  justify-content: space-evenly;
+  flex-direction: row-reverse;
+  align-items: center;
+  height: 30%;
+  margin-bottom: 1vh;
+}
+
+#indexPageAlert > p {
+  margin: 0;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+
+
+
+
+
+.statusUpdateFormHead {
+  text-align: center;
+  margin-bottom: 2vh;
+  margin-top: 3vh;
+  color: black;
+}
+
+#navigator {
+    /* background: red; */
+    position: absolute;
+    height: 7vh;
+    width: 7vh;
+    top: 2vh;
+    left: 2vw;
+    border-radius: 17px;
+    border: 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--dark-orange);
+}
+/* end of dayStatus */
+
+
+
+.menu li button {
+  width: 100%;
+  height: 100%;
+  background-color: transparent;
+}
+
+.authenticationForm {
+  display: flex;
+  align-items: center;
+  flex-flow: column;
+  margin-bottom: 1.5vh;
+}
+
+.mainForAuthentication {
+  width: 55%;
+  margin-left: 50%;
+  transform: translateX(-50%);
+}
+
+
+.authenticationForm input {
+  border-radius: 19px;
+  text-align: center;
+}
+
+.authenticationForm input:not([type="submit"]):focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: var(--dark-orange);
+  outline: 0;
+  box-shadow: 0 0 0 .2rem var(--dark-orange);
+}
+
+.authenticationForm input[type="submit"] {
+  padding: 0.8vh 3vw;
+  background-color: var(--dark-orange);
+  color: black;
+  border: unset;
+}
+
+
+.authenticationForm input[type="submit"]:hover {
+  border: 1px solid black;
+  transform: scale(1.03);
+} 
+
+.authenticationForm input[type="submit"]:active {
+  border: 1px solid black;
+} 
+
+.authenticationSVG {
+  position: absolute;
+  bottom: 6vh;
+  right: 1vw;
+  transform: translateX(-70%);
+  transform: rotate(22deg);
+  opacity: 0.5;
+  z-index: -1;
+}
+
+#changeTasksLayout {
+  text-align: center;
+  border-radius: 3px;
+}
+
+#sorter {
+  text-align: right;
+}
+
+
+.lds-bars {
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 10vh;
+  width: 7vw;
+  min-height: 50px;
+  min-width: 50px;
+  background: inherit;
+}
+
+
+.lds-bars div {
+  width: 12%;
+  border-radius: 45px;
+  background-color: var(--dark-orange);
+  animation: lds-bars 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+}
+
+.lds-bars div:nth-child(1) {
+  animation-delay: -0.24s;
+}
+.lds-bars div:nth-child(2) {
+  animation-delay: -0.12s;
+}
+.lds-facebook div:nth-child(3) {
+  animation-delay: 0;
+}
+@keyframes lds-bars {
+  0% {
+    height: 80%;
+  }
+  50%, 100% {
+    height: 45%;
+  }
+}
+
+
+.note {
+	display: block;
+	position: relative;
+	padding: 1em;
+	width: 90vw;
+	min-height: 70vh;
+	box-shadow: 5px 5px 10px -2px rgba(33,33,33,.3);
+	transform: rotate(2deg);
+	transform: skew(-1deg,1deg);
+	transition: transform .15s;
+	z-index: 1;
+  font-family: "Gloria Hallelujah", cursive;
+  border-radius: 5px;
+  margin-left: 50%;
+  transform: translateX(-50%);
+  max-width: 700px;
+  background-color: var(--dark-orange);
+}
+
+
+#noteForLogPage {
+  padding: 1.5vh;
+  min-height: fit-content;
+  background-color: var(--dark-orange);
+  margin: 0.8vh 0 2vh 0;
+	box-shadow: 5px 5px 10px -2px var(--shadow);
+  font-family: "Gloria Hallelujah", cursive;
+  border-radius: 5px;
+  color: black;
+  max-width: 85%;
+  border: 1px solid black;
+}
+
+#noteForLogPage > a {
+  width: 100%;
+  text-align: center;
+  margin-top: 2vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f6bd2e;
+  padding: 0.4vh 0;
+  border: 1px solid;
+}
+
+
+
+textarea {
+  height: 48vh;
+  width: 80vw;
+  font-size: 3vh;
+  resize: none;
+  padding: 5px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  resize: vertical;
+  width: 95%;
+  box-shadow: 0 0 1px 1px rgba(0,0,0,.1) inset;
+}
+
+
+textarea:focus {
+  outline: none;
+  border: none;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,.2) inset;
+}
+
+#dayStatusActionButtonHolder > * {
+  height: 5vh;
+  font-family: "Gloria Hallelujah", cursive;
+  color: white;
+  outline: unset;
+  border: unset;
+  margin: 0.5vh;
+  border-radius: 2px;
+  padding: 0.5vh 1vw;
+  font-size: 1.05em;
+}
+
+
+#dayStatusActionButtonHolder {
+  display: flex;
+  justify-content: center;
+}
+
+#clearBtn {
+  background-color: #E01C12;
+}
+
+#clearBtn:focus, #undoBtn:focus, #updateBtn:focus {
+  border: 1px solid black;
+}
+
+#clearBtn:hover {
+  background-color: #ef463e;
+}
+
+#undoBtn {
+  background-color: blue;
+}
+
+#undoBtn:hover {
+  background-color: rgb(42, 42, 232);
+}
+
+
+#updateBtn {
+ background-color: #1e971e;
+}
+
+#updateBtn:hover {
+  background-color: #23ae23;
+}
+
+
+
+
+@media only screen and (max-width: 500px){
+
+  .menu li > section {
+    height: unset;
+    width: unset;
+  }
+
+  .mainForAuthentication {
+    width: 85%;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  
+
+  .task{
+    box-shadow: var(--shadow) 1px 1px 3px;
+    font-size: 1rem;
+  }
+
+    #mainPage {
+        flex-direction: column;
+    }
+
+    #navAndTaskHolder {
+        order: 1;
+        height: 88%;
+        width: 100%;
+    }
+
+    #OptionsHolder {
+        min-width: unset;
+        max-width: unset;
+        order: 2;
+        height: 12%;
+        width: 100%;
+        position: relative;
+        overflow: visible;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+
+
+    .nav {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      width: 100vw;
+      box-shadow: var(--shadow) 0 3px 6px -12px,
+        rgb(0 0 0 / 15%) 0 18px 36px -18px;
+      overflow: visible;
+      z-index: 0;
+    }
+
+
+    .nav [type="checkbox"] + label {
+      transition: all 0.2s;
+    }
+
+
+
+    .menu li {
+      background-color: unset;
+      text-align: center;
+      list-style-type: none;
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: all 0.4s;
+      opacity: 0;
+      overflow: visible;
+      pointer-events: none;
+      border: unset;
+      width: fit-content;
+    }
+
+    .menu li:hover {
+      background-color: unset;
+    }
+    
+    .menu li:nth-child(1) {
+      transition-delay: 0.2s;
+    }
+    
+    .menu li:nth-child(2) {
+      transition-delay: 0.15s;
+    }
+    
+    .menu li:nth-child(3) {
+      transition-delay: 0.1s;
+    }
+    
+    .menu li:nth-child(4) {
+      transition-delay: 0.05s;
+    }
+    
+    .menu li a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark-orange);
+      color: var(--fontColor);
+      border: 1px solid black;
+    }
+    
+    .menu li button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: var(--dark-orange);
+      color: var(--menu-button);
+      border: 1px solid black;
+    }
+
+  .menu i {
+    color: black;
+    font-size: 170%;
+  }
+
+  
+  
+  
+
+
+    
+  .nav input:checked ~ .menu li {
+    pointer-events: all;
+    opacity:1;
+    overflow: visible;
+  }
+  
+  .nav input:checked ~ .menu li:nth-child(1) {
+    top: -200px;
+    transition-delay: 0.1s;
+  }
+  
+  .nav input:checked ~ .menu li:nth-child(2) {
+    top: -140px;
+    left: 28%;
+    transition-delay: 0.2s;
+  }
+
+  .nav input:checked ~ .menu li:nth-child(2) > span {
+    transform: translate(0%, calc(-100% + 2px));
+  }
+
+  .nav input:checked ~ .menu li:nth-child(2) > button {
+    margin-left: 50%;
+    transform: translateX(-165%);
+  }
+  
+  .nav input:checked ~ .menu li:nth-child(3) {
+    top: -140px;
+    left: 72%;
+    transition-delay: 0.3s;
+  }
+  
+  .nav input:checked ~ .menu li:nth-child(4) {
+    top: -95px;
+    transition-delay: 0.4s;
+  }
+  
+  .nav input:checked ~ .menu li a span {
+    opacity: 1;
+    transition-delay: 0.9s;
+  }
+
+
+  .nav input:checked + label {
+    transform: translateY(calc(-50% + 4px));
+  }
+
+
+  .links {
+    height: 90%;
+    width: 35%;
+    z-index: 1;
+  } 
+
+  .menu span {
+    bottom: unset;
+    top: 0;
+    left: 0;
+    transform: translate(0%, calc(-100% + -1px));
+    width: 100%;
+    font-size: 13px;
+    white-space: nowrap;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    color: var(--menu-button);
+    font-weight: bold;
+    overflow: visible;
+  }
+
+  .authenticationSVG {
+    height: 24vh;
+    width: 24vh;
+  }
+
+
+  .links {
+    min-width: 8vw;
+  }
+  
+
+  dialog {
+    min-width: 85vw;
+  }
+
+  #addTaskForm > * {
+    display: block;
+    margin-top: 0.5vh;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  
+  #indexPageAlert {
+    height: 18%;
+  }
+}

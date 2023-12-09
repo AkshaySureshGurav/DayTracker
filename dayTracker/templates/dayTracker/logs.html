@@ -1,0 +1,15 @@
+{% extends "dayTracker/layout.html" %}
+
+{% block body %}
+    <div style="overflow-y: auto;">
+        <a href="/"><div id="navigator"><i class="fa-solid fa-arrow-left"></i></div></a>
+        <h3 style="text-align: center; margin: 12vh 0 2vh 0; color: var(--fontColor);">Viewing logs <span id="logsPageHead"></span></h3>
+        <form style="text-align: center; margin: 0.2vh 0 2vh 0;">
+            <input id="dateValue" type="date" min='{{startDate}}' max="{{endDate}}" required>
+        </form>
+        {%load static %}
+        <section class="flexContAllCentered" id="logsPendingTasksHolder">
+        </section>
+    </div>
+    <script type="text/javascript" src="{% static 'dayTracker/forLogs.js' %}"></script>
+{% endblock %}

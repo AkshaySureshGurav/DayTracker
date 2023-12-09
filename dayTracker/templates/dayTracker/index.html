@@ -1,0 +1,163 @@
+{% extends "dayTracker/layout.html" %}
+
+{% block body %}
+    <div id="mainPage">
+        <section id="navAndTaskHolder">
+            <nav>
+                <section id="symbol">
+                    <svg height="100%" width="100%" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+                    viewBox="0 0 512.001 512.001" xml:space="preserve">
+                        <path style="fill:#FFD155;" d="M470.656,512.001h-304.22c-10.345,0-18.732-8.387-18.732-18.732v-125.09
+                            c0-10.345,8.387-18.732,18.732-18.732h160.397V189.049c0-10.345,8.387-18.732,18.732-18.732h125.09
+                            c10.345,0,18.732,8.387,18.732,18.732v304.22C489.388,503.614,481.001,512.001,470.656,512.001z"/>
+                        <path style="fill:#FFDA79;" d="M345.566,386.91H41.346c-10.345,0-18.732-8.387-18.732-18.732V63.958
+                            c0-10.345,8.387-18.732,18.732-18.732h304.219c10.345,0,18.732,8.387,18.732,18.732v304.22
+                            C364.298,378.523,355.911,386.91,345.566,386.91z"/>
+                        <path style="fill:#6A82A1;" d="M180.206,129.826c-7.315-7.315-7.315-19.175,0-26.49l97.849-97.849c7.315-7.315,19.176-7.315,26.49,0
+                            c7.315,7.315,7.315,19.175,0,26.49l-97.849,97.849C199.381,137.142,187.52,137.143,180.206,129.826z"/>
+                    </svg>
+                </section>  
+                <section>
+                    <h4>Hello, {{viewerName}}!</h4>
+                    <p style="font-size: 0.75em;">{{todayDate}}</p>
+                </section>  
+            </nav>
+            <div id="taskAdderAndShowerHolder">
+                <section class="addTaskFormHolder">
+                    <div id="indexPageAlert">
+                        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                        <p id="message"></p>
+                    </div>
+                    <form id="addTaskForm" class="hide">
+                        {% csrf_token %}
+                        <input type="text" name="task" required>
+                        <select name="priority" required>
+                            <option value="" selected hidden disabled>
+                                Set priority
+                            </option>
+                            <option value="1">
+                                Low
+                            </option>
+                            <option value="2">
+                                Medium
+                            </option>
+                            <option value="3">
+                                High
+                            </option>
+                        </select>
+                        <input type="submit" name="addTaskFormSubmitter" value="Add task">
+                    </form>
+                    <button id="toggleAddTaskFormToggler">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+                    </button>
+                </section>
+                <section style="display: flex; justify-content: space-between; padding: 0.4vh 2vw; margin-top: 1vh;"> 
+                    <p id="pendingCount" style="padding: 0 0.5vh;font-size: 0.94em; border: 1px solid var(--dark-orange); border-radius: 5px;">Pending: {{ numberOfTasks }}</p> 
+                    <section id="sorter">
+                        <span style="font-size: 0.94em;">Sort: </span>
+                        <select style="font-size: 0.89em;" name="changeTasksLayout" id="changeTasksLayout">
+                            <option value="0" selected>Default</option>
+                            <option value="1">Priority: low to high</option>
+                            <option value="2">Priority: high to low</option>
+                            <option value="3">Date - ascending</option>
+                            <option value="4">Date - descending</option>
+                        </select>
+                    </section>
+                </section>
+                <form id="deleteTaskForm">
+                    {% csrf_token %}
+                </form>
+                <div id="tasksHolder">
+                    {% if tasks %}
+                        {% for task in tasks %}
+                            {% if not task.isCompleted %}
+                                <section class="task" id="task-{{ task.id }}">
+                                    <section style="width: 70%;">
+                                        <p class="whatTask">{{task.task}}</p>
+                                        <p style="font-size: 0.85em;" class="priorityPara">Priority: 
+                                            {% if task.priority == 3 %}
+                                                <span style="display:block; height : 1em; width: 1em; background-color: red; border-radius: 17px;"></span>
+                                            {% elif task.priority == 2 %}
+                                                <span style="display:block; height : 1em; width: 1em; background-color: green; border-radius: 17px;"></span>
+                                            {% elif task.priority == 1 %}
+                                                <span style="display:block; height : 1em; width: 1em; background-color: blue; border-radius: 17px;"></span>
+                                            {% else %}
+                                                <span>Invalid priority given</span>
+                                            {% endif %}
+                                        </p>   
+                                        <p style="font-size: 0.85em;">Created on {{task.creationDate}}</p>
+                                    </section>
+                                    <section class="d-flex justify-content-end flex-wrap">
+                                        <button style='background-color: #c6ffc5; border: 1px solid #02cd00;' class="taskActionBtn completeTaskBtn"  id="{{ task.id }}">
+                                            <i style='color: #02cd00;' class="fa-solid fa-check" ></i>
+                                        </button>   
+                                        <button style='background-color: #ffd6d1; border: 1px solid #ee1800;' class="taskActionBtn deleteTaskBtn"  id="{{ task.id }}">
+                                            <i style='color: #ee1800;' class="fa-solid fa-trash"></i>
+                                        </button>
+                                    </section>   
+                                    <!-- <button class="deleteTaskBtn" id="{{ task.id }}">Delete</button>    -->
+                                </section>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <h5 style="text-align: center; margin-top: 12%;">No pending task</h5>
+                    {% endif %}
+                </div>
+                <dialog>
+                    <p>Are you sure, you want to <span id="dialogBoxType">delete the task</span> - '<span id="dialogTask">Task</span>'</p>
+                    <button style="background-color: #c6ffc5;border: 1px solid #02cd00;" id="yes">Yes</button>
+                    <button style="background-color: #ffd6d1;border: 1px solid #ee1800;" id="no" autofocus>no</button>
+                </dialog>
+            </div>
+        </section>
+        <section id="OptionsHolder">
+            <section class="links">
+                <a class="d-flex flex-column justify-content-center" href="/updateToday">
+                    <i class="fa-regular fa-pen-to-square"></i>
+                    <p>Today's status</p>
+                </a>
+            </section>  
+            <section class="links">  
+                <a class="d-flex flex-column justify-content-center" href="/logs">  
+                    <i class="fa-regular fa-calendar-days"></i>  
+                    <p>Logs</p> 
+                </a>
+            </section> 
+
+            <nav class="nav">
+                <input id="menu" type="checkbox">
+                <label for="menu">Menu</label>
+                <ul class="menu">
+                  <li>
+                    <button onclick="alert('The developer of this webapp is Akshay Suresh Gurav.')">
+                        <span>Developer</span>
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                  </li>
+                  <li>
+                    <section>
+                        <span>Night</span>
+                        <button id="ChangeView">
+                          <i class="fa-solid fa-moon"></i>  
+                        </button>
+                    </section>
+                  </li>
+                  <li>
+                    <a href="/logout">
+                      <span>Logout</span>
+                      <i class="fa-solid fa-right-from-bracket"></i>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#0">
+                        <span>About</span>
+                        <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                  </li>
+                </ul>
+            </nav>
+        </section>
+    </div>
+    {%load static %}
+    <script type="text/javascript" src="{% static 'dayTracker/forIndex.js' %}"></script>
+{% endblock %}

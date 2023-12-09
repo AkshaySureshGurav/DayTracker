@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>DayTracker</title>  
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        {%load static %}
+        <link rel="icon" type="image/png" sizes="32x32" href="{% static 'dayTracker/favicon-32x32.png' %}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        {%load static %}
+        <link href="{% static 'dayTracker/styles.css' %}" rel="stylesheet">
+        
+    </head>
+    <body>
+        <a href="/"><div id="navigator"><i class="fa-solid fa-arrow-left"></i></div></a>
+
+        <div style="margin-top: 10vh;">
+            <div id="alert">
+                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+                <p id="message"></p>
+            </div>
+
+            <div class="note">
+                {% if pastUpdatedTask %}
+                    <h3 class="statusUpdateFormHead">Editing previously updated status</h3>
+                {% else %}
+                    <h3 class="statusUpdateFormHead">Update today's status</h3>
+                {% endif %}
+                <form id="statusUpdate">
+                    {% csrf_token %}
+                    <textarea name="textInput" id="textInput" cols="30" rows="10">{{pastUpdatedTask}}</textarea>
+                    <section id="dayStatusActionButtonHolder">
+                        <button type="button" id="clearBtn">Clear</button>
+                        <button type="reset" id="undoBtn">Undo</button>
+                        <input id="updateBtn" type="submit" value="Update">
+                    </section>
+                </form>
+            </div>
+        </div>
+
+
+
+
+        <script type="module" src="{% static 'dayTracker/dayStatus.js' %}"></script>
+    </body>
+</html>
