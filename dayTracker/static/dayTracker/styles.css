@@ -23,7 +23,15 @@
     z-index: 1;
 }
 
+
+html {
+    height: -webkit-fill-available;
+}
+
+
 body {
+    height: 100vh;
+    height: -webkit-fill-available;
     color: var(--fontColor);
     background-color: var(--bgColor);
     font-family: "Inter", sans-serif;
